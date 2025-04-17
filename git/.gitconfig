@@ -1,0 +1,42 @@
+[core]
+    pager = delta
+	  autocrlf = input
+    editor = nvim
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    side-by-side = true
+    ; features = diff-so-fancy
+    # Basic colors
+    minus-style = "syntax #3f000f"
+    minus-emph-style = "syntax #E52E2E"
+    plus-style = "syntax #002800"
+    plus-emph-style = "syntax #44FFB1"
+    
+    # Line numbers
+    line-numbers = true
+    line-numbers-minus-style = "#E52E2E"
+    line-numbers-plus-style = "#44FFB1"
+    line-numbers-zero-style = "#214969"
+    
+    # Other UI elements
+    commit-decoration-style = "bold #A277FF"
+    file-style = "bold #24EAF7"
+    hunk-header-style = "syntax #033259"
+    hunk-header-decoration-style = "#0FC5ED ul"
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
+[user]
+	  name = Facundo Carbonel
+    email = facundoc@takeoffmedia.com
+[pull]
+    rebase = false
+[init]
+	defaultBranch = main

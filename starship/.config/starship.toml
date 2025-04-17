@@ -1,0 +1,56 @@
+format = """
+[](#A277FF)$username$directory$git_branch$git_status$git_state[](fg:#A277FF)$nodejs
+$character
+"""
+
+[character]
+format= "[$symbol]($style) "
+
+[username]
+show_always = true
+style_user = "bold bg:#A277FF"
+style_root = "bold bg:#A277FF"
+format = '[ ♥  $user ]($style)'
+disabled = false
+
+[directory]
+style = "bg:#A277FF"
+format = "[ $path ]($style)"
+truncation_length = 3
+truncation_symbol = "…/"
+
+[directory.substitutions]
+"Documents" = "󰈙 "
+"Downloads" = " "
+"home" = "🏠"
+"dev" = "💻"
+"Desktop" = "🍻"
+
+[git_branch]
+symbol = ""
+style = "bg:#A277FF"
+format = '[ $symbol $branch ]($style)'
+
+[git_status]
+style = "bg:#A277FF"
+format = '[$all_status$ahead_behind ]($style)'
+
+[nodejs]
+symbol = " "
+format = '[ $symbol $version](bold green) '
+
+[python]
+symbol = " "
+format = '[ $symbol $version](bold yellow) '
+
+[rust]
+symbol = "󱘗 "
+format = '[ $symbol $version](red bold)'
+
+[git_state]
+style = "bg:#A277FF"
+format = '[\($state( $progress_current of $progress_total)\)]($style) '
+cherry_pick = '[🍒 PICKING](bold red)'
+merge = '[🔀 MERGING](bold orange)'
+rebase = '[🔁 REBASING](bold yellow)'
+revert = '[🔄 REVERTING](bold green)'
