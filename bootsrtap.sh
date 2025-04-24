@@ -32,6 +32,12 @@ fi
 echo "🍻 Installing Homebrew packages..."
 brew install bat eza git-delta starship zoxide stow neovim fd thefuck fzf jq nvm zsh-autosuggestions zsh-syntax-highlighting
 
+echo "📦 Installing Node.js (LTS)..."
+export NVM_DIR="$HOME/.nvm"
+source "$NVM_DIR/nvm.sh"
+nvm install --lts
+nvm alias default lts/*
+
 echo "🐳 Installing Docker and Docker Compose..."
 sudo apt install -y ca-certificates curl gnupg lsb-release
 

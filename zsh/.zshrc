@@ -97,8 +97,14 @@ source /home/linuxbrew/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.
 #### zsh-syntax-highlighting ####
 source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-### Curlier Config ####
+#### Curlier Config ####
 export CURLIER_REQUESTS_DIR="$HOME/dev/curlier_requests"
+
+#### NVM ####
+export NVM_DIR="$HOME/.nvm"
+export NVM_SYMLINK_CURRENT=true
+[ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"
+[ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
 
 #### Aliases ####
 
