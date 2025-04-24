@@ -11,7 +11,7 @@ command_exists() {
 
 echo "📦 Installing packages..."
 sudo apt update
-sudo apt install -y git zsh curl build-essential make unzip wslu
+sudo apt install -y git zsh curl build-essential make unzip wslu fontconfig
 
 # Homebrew installation
 if ! command_exists brew; then
