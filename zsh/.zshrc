@@ -1,6 +1,6 @@
 export LD_LIBRARY_PATH=/opt/glibc-2.34/lib:$LD_LIBRARY_PATH
 
-# history setup
+#### history setup ####
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
 HISTSIZE=999
@@ -9,22 +9,22 @@ setopt hist_expire_dups_first
 setopt hist_ignore_dups
 setopt hist_verify
 
-# completion using arrow keys (based on history)
+# completion using arrow keys
 bindkey '^[[A' history-search-backward
 bindkey '^[[B' history-search-forward
 
-# starship
+#### starship ####
 eval "$(starship init zsh)"
 
-# Homebrew
+#### Homebrew ####
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
-# ---- FZF -----
+#### FZF ####
 
 # Set up fzf key bindings and fuzzy completion
 eval "$(fzf --zsh)"
 
-# -- Use fd instead of fzf --
+# Use fd instead of fzf
 
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude .git"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -44,7 +44,7 @@ _fzf_compgen_dir() {
 
 source ~/fzf-git.sh/fzf-git.sh
 
-# --- setup fzf theme ---
+#### fzf theme ####
 fg="#CBE0F0"
 bg="#011628"
 bg_highlight="#143652"
@@ -74,33 +74,37 @@ _fzf_comprun() {
   esac
 }
 
-# ----- Bat (better cat) -----
+#### Bat ####
 
 export BAT_THEME=tokyonight_night
 
-# ---- Eza (better ls) -----
+#### Eza (better ls) ####
 
 alias ls="eza --color=always --long --git --no-filesize --icons=always --no-time --no-user --no-permissions"
 
-# thefuck alias
+#### thefuck ####
 eval $(thefuck --alias)
 eval $(thefuck --alias fk)
 
-# ---- Zoxide (better cd) ----
+#### Zoxide ####
 eval "$(zoxide init zsh)"
 
 alias cd="z"
 
-# zsh-autosuggestions
+#### zsh-autosuggestions ####
 source /home/linuxbrew/.linuxbrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-# zsh-syntax-highlighting
+#### zsh-syntax-highlighting ####
 source /home/linuxbrew/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
-# Aliases
+### Curlier Config ####
+export CURLIER_REQUESTS_DIR="$HOME/dev/curlier_requests"
+
+#### Aliases ####
 
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
 alias edit-wezterm="nvim /mnt/c/Users/facundoc-tkf/.wezterm.lua"
 alias edit-nvim="nvim ~/.config/nvim/"
-
+alias curlier="/home/faq/curlier/curlier.sh"
+alias syncwez="~/dotfiles/wezterm/sync_wezterm.sh"
