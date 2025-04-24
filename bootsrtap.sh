@@ -30,11 +30,11 @@ if [[ ! -d "$DOTFILES_DIR" ]]; then
 fi
 
 echo "🍻 Installing Homebrew packages..."
-brew install bat eza git-delta starship zoxide stow neovim fd thefuck fzf jq nvm zsh-autosuggestions zsh-syntax-highlighting
+brew install go bat eza git-delta starship zoxide stow neovim fd thefuck fzf jq nvm zsh-autosuggestions zsh-syntax-highlighting
 
 echo "📦 Installing Node.js (LTS)..."
 export NVM_DIR="$HOME/.nvm"
-source "$NVM_DIR/nvm.sh"
+. "$(brew --prefix nvm)/nvm.sh"
 nvm install --lts
 nvm alias default lts/*
 
