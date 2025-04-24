@@ -1,4 +1,6 @@
 export LD_LIBRARY_PATH=/opt/glibc-2.34/lib:$LD_LIBRARY_PATH
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 #### history setup ####
 HISTFILE=$HOME/.zhistory
