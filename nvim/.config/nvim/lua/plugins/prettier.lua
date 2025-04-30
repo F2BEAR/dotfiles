@@ -11,7 +11,34 @@ return {
     opts = function(_, opts)
       local nls = require("null-ls")
       opts.sources = opts.sources or {}
-      table.insert(opts.sources, nls.builtins.formatting.prettier)
+      table.insert(
+        opts.sources,
+        nls.builtins.formatting.prettier.with({
+          prefer_local = "node_modules/.bin",
+          condition = function(utils)
+            return not utils.root_has_file({
+              ".prettierrc",
+              ".prettierrc.js",
+              ".prettierrc.json",
+              ".prettierrc.yml",
+              ".prettierrc.yaml",
+              ".prettierrc.toml",
+              ".prettierrc.json5",
+              "prettier.config.js",
+              "prettier.config.cjs",
+              ".prettierrc.cjs",
+            })
+          end,
+          extra_args = {
+            "--single-quote",
+            "--trailing-comma",
+            "all",
+            "--use-tabs",
+            "--tab-width",
+            "2",
+          },
+        })
+      )
     end,
   },
   {
@@ -28,13 +55,12 @@ return {
         ["scss"] = { "prettier" },
         ["less"] = { "prettier" },
         ["html"] = { "prettier" },
-        ["json"] = { "prettier" },
-        ["jsonc"] = { "prettier" },
-        ["yaml"] = { "prettier" },
-        ["markdown"] = { "prettier" },
-        ["markdown.mdx"] = { "prettier" },
-        ["graphql"] = { "prettier" },
-        ["handlebars"] = { "prettier" },
+        ["json"] = { "jq" },
+        ["jsonc"] = { "jq" },
+        ["yaml"] = { "yamlfmt" },
+        ["markdown"] = { "markdown-toc" },
+        ["markdown.mdx"] = { "markdown-toc" },
+        ["lua"] = { "stylua" },
       },
     },
   },

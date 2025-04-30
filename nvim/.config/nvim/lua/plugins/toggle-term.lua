@@ -7,7 +7,6 @@ return {
     keys = { { "<F4>", "<cmd>ToggleTerm<cr>", desc = "Toggle terminal" } },
     opts = {
       size = 15,
-      dir = "C:/",
       open_mapping = "<F4>",
       direction = "horizontal",
       hide_numbers = true,

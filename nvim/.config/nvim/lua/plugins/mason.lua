@@ -22,6 +22,8 @@ return {
         "sql-formatter",
         "prettier",
         "stylua",
+        "jq",
+        "yamlfmt",
 
         -- Linters
         "shellcheck",
@@ -49,42 +51,5 @@ return {
         "bashls",
       },
     },
-  },
-  {
-    "nvimtools/none-ls.nvim",
-    opts = function(_, opts)
-      local null_ls = require("null-ls")
-
-      table.insert(
-        opts.sources or {},
-        null_ls.builtins.formatting.prettier.with({
-          prefer_local = "node_modules/.bin",
-          condition = function(utils)
-            return not utils.root_has_file({
-              ".prettierrc",
-              ".prettierrc.js",
-              ".prettierrc.json",
-              ".prettierrc.yml",
-              ".prettierrc.yaml",
-              ".prettierrc.toml",
-              ".prettierrc.json5",
-              "prettier.config.js",
-              "prettier.config.cjs",
-              ".prettierrc.cjs",
-            })
-          end,
-          extra_args = {
-            "--single-quote",
-            "--trailing-comma",
-            "all",
-            "--use-tabs",
-            "--tab-width",
-            "2",
-          },
-        })
-      )
-
-      return opts
-    end,
   },
 }

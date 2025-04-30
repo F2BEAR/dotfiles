@@ -15,8 +15,6 @@ return {
       local lualine_require = require("lualine_require")
       lualine_require.require = require
 
-      local icons = LazyVim.config.icons
-
       vim.o.laststatus = vim.g.lualine_laststatus
 
       print("Configuración de lualine cargada")
@@ -41,7 +39,7 @@ return {
             { LazyVim.lualine.pretty_path() },
             {
               function()
-                local clients = vim.lsp.get_active_clients({ bufnr = 0 })
+                local clients = vim.lsp.get_clients({ bufnr = 0 })
                 if #clients == 0 then
                   return ""
                 end
