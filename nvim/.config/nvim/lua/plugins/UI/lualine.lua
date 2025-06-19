@@ -17,7 +17,6 @@ return {
 
       vim.o.laststatus = vim.g.lualine_laststatus
 
-      print("Configuración de lualine cargada")
       local opts = {
         options = {
           theme = "onedark",
@@ -25,9 +24,8 @@ return {
           disabled_filetypes = {
             statusline = {
               "dashboard",
-              "alpha",
-              "ministarter",
-              "snacks_dashboard",
+              "neo-tree",
+              "avante",
             },
           },
         },
@@ -36,7 +34,11 @@ return {
           lualine_b = { "branch", "diff" },
           lualine_c = {
             { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
-            { LazyVim.lualine.pretty_path() },
+            {
+              function()
+                return vim.fn.expand("%:t")
+              end,
+            },
             {
               function()
                 local clients = vim.lsp.get_clients({ bufnr = 0 })
