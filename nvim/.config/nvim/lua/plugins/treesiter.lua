@@ -14,16 +14,18 @@ return {
         "markdown",
         "prisma",
         "sql",
+        "tsx",
         "typescript",
         "vim",
         "yaml",
       },
       highlight = {
-        enable = true
+        enable = true,
       },
       indent = {
-        enable = true
+        enable = true,
       },
+      autoinstall = true,
     },
-  }
+  },
 }

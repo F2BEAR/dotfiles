@@ -108,12 +108,86 @@ export NVM_SYMLINK_CURRENT=true
 [ -s "$(brew --prefix nvm)/nvm.sh" ] && \. "$(brew --prefix nvm)/nvm.sh"
 [ -s "$(brew --prefix nvm)/etc/bash_completion.d/nvm" ] && \. "$(brew --prefix nvm)/etc/bash_completion.d/nvm"
 
+#### ZSH Vi Mode ####
+source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
+
 #### Aliases ####
 
 alias reload-zsh="source ~/.zshrc"
 alias edit-zsh="nvim ~/.zshrc"
 alias edit-wezterm="nvim /mnt/c/Users/facundoc-tkf/.wezterm.lua"
-alias edit-nvim="nvim ~/.config/nvim/"
+alias edit-nvim="cd ~/dotfiles/nvim/.config/nvim/ && nvim"
 alias curlier="/home/faq/curlier/curlier.sh"
 alias syncwez="~/dotfiles/wezterm/sync_wezterm.sh"
 alias mdfzf="~/scripts/mdfzf.sh"
+alias gdiff="git diff --ours --theirs"
+alias gconflict='files=$(git diff --name-only --diff-filter=U) && [ -n "$files" ] && nvim $files || echo "No merge conflicts found."'
+
+# pnpm
+export PNPM_HOME="/home/faq/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+#### Bitwarden CLI ####
+# Unlock Bitwarden vault and export session token
+bw-unlock() {
+  export BW_SESSION=$(bw unlock --raw)
+  if [ $? -eq 0 ]; then
+    echo "✅ Bitwarden vault unlocked"
+  else
+    echo "❌ Failed to unlock Bitwarden vault"
+  fi
+}
+
+# Lock Bitwarden vault
+bw-lock() {
+  bw lock
+  unset BW_SESSION
+  echo "🔒 Bitwarden vault locked"
+}
+
+# Get password from Bitwarden
+bw-get() {
+  if [ -z "$BW_SESSION" ]; then
+    echo "⚠️  Bitwarden vault is locked. Run 'bw-unlock' first."
+    return 1
+  fi
+  
+  if [ -z "$1" ]; then
+    echo "Usage: bw-get <search-term>"
+    return 1
+  fi
+  
+  bw get notes "$1" --session $BW_SESSION
+}
+
+# Search items in Bitwarden
+bw-search() {
+  if [ -z "$BW_SESSION" ]; then
+    echo "⚠️  Bitwarden vault is locked. Run 'bw-unlock' first."
+    return 1
+  fi
+  
+  if [ -z "$1" ]; then
+    echo "Usage: bw-search <search-term>"
+    return 1
+  fi
+  
+  bw list items --search "$1" --session $BW_SESSION | jq -r '.[] | "\(.name) - \(.login.username)"'
+}
+
+# Connect to GitHub using Bitwarden
+gh-connect() {
+  ~/dotfiles/git/connect-github.sh
+}
+
+# Alias for quick login
+alias bwu="bw-unlock"
+alias bwl="bw-lock"
+alias bwg="bw-get"
+alias bws="bw-search"
+alias ghc="gh-connect"
+. "/home/faq/.deno/env"

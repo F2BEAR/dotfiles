@@ -17,6 +17,7 @@ return {
 				"tailwindcss-language-server",
 				"vtsls",
 				"bash-language-server",
+				"deno",
 
 				-- Formatters
 				"shfmt",

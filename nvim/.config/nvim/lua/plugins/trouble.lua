@@ -1,25 +1,33 @@
 return {
-	{
-		"folke/trouble.nvim",
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("trouble").setup({
-				modes = {
-					preview_float = {
-						mode = "diagnostics",
-						preview = {
-							type = "float",
-							relative = "editor",
-							border = "rounded",
-							title = "Preview",
-							title_pos = "center",
-							position = { 0, -2 },
-							size = { width = 0.3, height = 0.3 },
-							zindex = 200,
-						},
-					},
-				},
-			})
-		end,
-	},
+  {
+    "folke/trouble.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    cmd = "Trouble",
+    opts = {
+      fold_open = "",
+      fold_closed = "",
+      focus = true,
+      group = true,
+      use_diagnostic_signs = true,
+      win = {
+        size = {
+          height = 0.25,
+          width = 1,
+        },
+        type = "split",
+        border = "rounded",
+      },
+      preview = {
+        type = "split",
+        relative = "win",
+        border = "rounded",
+        position = "right",
+        size = {
+          height = 1,
+          width = 0.5,
+        },
+        zindex = 200,
+      },
+    },
+  },
 }
