@@ -162,6 +162,54 @@ Cuando Deno LSP está activo, el TypeScript LSP (vtsls) se desactiva automática
 - `q` - Cerrar
 - `o` - Jump y cerrar Trouble
 
+### Treesitter Text Objects
+
+Navegación y manipulación inteligente de código usando el árbol de sintaxis.
+
+**Selección de Text Objects:**
+
+| Tecla | Modo | Acción |
+|-------|------|--------|
+| `af` | Normal/Visual | Seleccionar función completa (outer) |
+| `if` | Normal/Visual | Seleccionar contenido de función (inner) |
+| `ac` | Normal/Visual | Seleccionar clase completa (outer) |
+| `ic` | Normal/Visual | Seleccionar contenido de clase (inner) |
+| `aa` | Normal/Visual | Seleccionar parámetro completo (outer) |
+| `ia` | Normal/Visual | Seleccionar contenido de parámetro (inner) |
+| `ab` | Normal/Visual | Seleccionar bloque completo (outer) |
+| `ib` | Normal/Visual | Seleccionar contenido de bloque (inner) |
+
+**Navegación entre elementos:**
+
+| Tecla | Modo | Acción |
+|-------|------|--------|
+| `]f` | Normal | Ir al inicio de la siguiente función |
+| `[f` | Normal | Ir al inicio de la función anterior |
+| `]F` | Normal | Ir al final de la siguiente función |
+| `[F` | Normal | Ir al final de la función anterior |
+| `]c` | Normal | Ir al inicio de la siguiente clase |
+| `[c` | Normal | Ir al inicio de la clase anterior |
+| `]C` | Normal | Ir al final de la siguiente clase |
+| `[C` | Normal | Ir al final de la clase anterior |
+| `]a` | Normal | Ir al siguiente parámetro |
+| `[a` | Normal | Ir al parámetro anterior |
+| `]A` | Normal | Ir al final del siguiente parámetro |
+| `[A` | Normal | Ir al final del parámetro anterior |
+
+**Intercambio de parámetros:**
+
+| Tecla | Modo | Acción |
+|-------|------|--------|
+| `<leader>a` | Normal | Intercambiar parámetro actual con el siguiente |
+| `<leader>A` | Normal | Intercambiar parámetro actual con el anterior |
+
+**Ejemplos de uso:**
+- `dif` - Eliminar contenido de función
+- `vaf` - Seleccionar función completa en visual mode
+- `cia` - Cambiar contenido de parámetro
+- `]f]f` - Saltar dos funciones adelante
+- Posicionarse en un parámetro y usar `<leader>a` para intercambiarlo con el siguiente
+
 ## 🎨 Git
 
 ### Gitsigns
