@@ -119,6 +119,7 @@ alias edit-wezterm="nvim /mnt/c/Users/facundoc-tkf/.wezterm.lua"
 alias edit-nvim="cd ~/dotfiles/nvim/.config/nvim/ && nvim"
 alias curlier="/home/faq/curlier/curlier.sh"
 alias syncwez="~/dotfiles/wezterm/sync_wezterm.sh"
+alias syncwsl="~/dotfiles/wsl/sync_wsl.sh"
 alias mdfzf="~/scripts/mdfzf.sh"
 alias gdiff="git diff --ours --theirs"
 alias gconflict='files=$(git diff --name-only --diff-filter=U) && [ -n "$files" ] && nvim $files || echo "No merge conflicts found."'
