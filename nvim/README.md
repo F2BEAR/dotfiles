@@ -95,6 +95,19 @@ cd ~/dotfiles/nvim/.config/nvim/ && nvim
 | `<leader>s` | Normal | Buscar en proyecto (grep) |
 | `<leader>sb` | Normal | Buscar en buffer actual |
 
+### Rip-Substitute (Search & Replace)
+
+| Tecla | Modo | Acción |
+|-------|------|--------|
+| `<leader>fs` | Normal/Visual | Buscar y reemplazar con popup interactivo |
+
+**Características:**
+- Preview en tiempo real de los cambios
+- Soporte para expresiones regulares (regex)
+- Reemplazo en múltiples archivos
+- UI interactiva con vista previa
+- Funciona tanto en selección visual como en todo el proyecto
+
 ## 🧠 LSP y Autocompletado
 
 ### LSP Navigation
@@ -449,6 +462,7 @@ nvim/.config/nvim/
 │           ├── breadcrums.lua       # Breadcrumbs
 │           ├── ufo.lua              # Code folding
 │           ├── colorizer.lua        # Color Highlighter
+│           ├── rip-substitute.lua   # Search & Replace
 │           └── colorscheme.lua      # Theme 
 └── lazy-lock.json                   # Lock de versiones
 ```
