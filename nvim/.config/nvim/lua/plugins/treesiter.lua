@@ -18,6 +18,7 @@ return {
         "typescript",
         "vim",
         "yaml",
+        "toml"
       },
       highlight = {
         enable = true,
