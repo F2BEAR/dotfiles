@@ -222,6 +222,13 @@ Cuando Deno LSP está activo, el TypeScript LSP (vtsls) se desactiva automática
 | `Ctrl+W` `>/<` | Normal | Aumentar/Reducir ancho |
 | `Ctrl+W` `+/-` | Normal | Aumentar/Reducir alto |
 
+### UFO (Code Folding)
+
+| Tecla | Modo | Acción |
+|-------|------|--------|
+| `zR` | Normal | Expandir todo |
+| `zM` | Normal | Colapsar todo |
+| `za` | Normal | Alternar fold bajo cursor |
 ## 🧩 Plugins
 
 ### Which-Key
@@ -231,6 +238,12 @@ Presiona `<Space>` y espera ~500ms para ver todos los keybindings disponibles.
 | Tecla | Modo | Acción |
 |-------|------|--------|
 | `<leader>?` | Normal | Buscar keybindings |
+
+### NavBuddy
+
+| Tecla | Modo | Acción |
+|-------|------|--------|
+| `<leader>nb` | Normal | Abrir NavBuddy Breadcrumbs Navigation |
 
 ### Mason (LSP/Tools Manager)
 
@@ -272,17 +285,6 @@ GitHub Copilot integrado con Blink.cmp.
 - Sugerencias en línea automáticas
 - Integrado con autocompletado
 - Prioridad alta en sugerencias
-
-### Avante.nvim (AI Chat)
-
-Plugin AI para asistencia de código con GitHub Copilot.
-
-**Modelo**: GPT-4o (2024-11-20)
-
-| Comando | Acción |
-|---------|--------|
-| `:AvanteAsk` | Hacer pregunta a AI |
-| `:AvanteChat` | Abrir chat |
 
 ### Treesitter
 
@@ -358,34 +360,42 @@ Usa un theme personalizado basado en Coolnight (configurado en `lua/plugins/UI/c
 
 ```
 nvim/.config/nvim/
-├── init.lua                    # Entry point
+├── init.lua                         # Entry point
 ├── lua/
 │   ├── core/
-│   │   ├── options.lua         # Opciones de Vim
-│   │   ├── keymaps.lua         # Keybindings personalizados
-│   │   └── autocmd.lua         # Autocomandos
+│   │   ├── options.lua              # Opciones de neovim
+│   │   ├── keymaps.lua              # Keybindings personalizados
+│   │   └── autocmd.lua              # Autocomandos
 │   └── plugins/
-│       ├── lsp.lua             # Configuración LSP
-│       ├── treesitter.lua      # Treesitter
-│       ├── telescope.lua       # Telescope
-│       ├── blink.lua           # Autocompletado
-│       ├── copilot.lua         # GitHub Copilot
-│       ├── avante.lua          # AI Chat
-│       ├── git.lua             # Gitsigns + Diffview
-│       ├── conform.lua         # Formatters
-│       ├── trouble.lua         # Diagnósticos
-│       ├── mason.lua           # LSP Manager
-│       ├── snacks.lua          # Utilidades
+│       ├── autopairs.lua            # Auto Pairs
+│       ├── comment.lua              # Comentarios
+│       ├── fzf-lua.lua              # FZF-Lua
+│       ├── telescope.lua            # Telescope
+│       ├── tiny-code-actions.lua    # Code Actions
+│       ├── markdown.lua             # Markdown rendering
+│       ├── lsp.lua                  # Configuración LSP
+│       ├── treesitter.lua           # Treesitter
+│       ├── blink.lua                # Autocompletado
+│       ├── copilot.lua              # GitHub Copilot
+│       ├── git.lua                  # Gitsigns + Diffview
+│       ├── conform.lua              # Formatters
+│       ├── trouble.lua              # Diagnósticos
+│       ├── mason.lua                # LSP Manager
+│       ├── snacks.lua               # Utilidades
 │       └── UI/
-│           ├── neo-tree.lua    # File explorer
-│           ├── bufferline.lua  # Tabs de buffers
-│           ├── lualine.lua     # Statusline
-│           ├── toggle-term.lua # Terminal
-│           ├── whichkey.lua    # Keybinding helper
-│           ├── noice.lua       # UI mejorado
-│           ├── dashboard.lua   # Dashboard
-│           └── colorscheme.lua # Theme
-└── lazy-lock.json              # Lock de versiones
+│           ├── neo-tree.lua         # File explorer
+│           ├── bufferline.lua       # Tabs de buffers
+│           ├── lualine.lua          # Statusline
+│           ├── toggle-term.lua      # Terminal
+│           ├── whichkey.lua         # Keybinding helper
+│           ├── noice.lua            # UI de mensajes, cmdline y popupmenus mejorado
+│           ├── dashboard.lua        # Dashboard
+│           ├── blink-indent.lua     # Indent guides
+│           ├── breadcrums.lua       # Breadcrumbs
+│           ├── ufo.lua              # Code folding
+│           ├── colorizer.lua        # Color Highlighter
+│           └── colorscheme.lua      # Theme 
+└── lazy-lock.json                   # Lock de versiones
 ```
 
 ## 🔧 Personalización
@@ -449,12 +459,6 @@ opt.mi_opcion = valor
 ```vim
 :ConformInfo  " Ver estado de formatters
 ```
-
-## 📚 Recursos
-
-- [Lazy.nvim](https://github.com/folke/lazy.nvim) - Plugin manager
-- [LazyVim](https://www.lazyvim.org/) - Distribución base
-- [Neovim Docs](https://neovim.io/doc/) - Documentación oficial
 
 ## 🎓 Tips
 
