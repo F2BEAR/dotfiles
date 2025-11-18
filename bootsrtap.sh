@@ -181,20 +181,6 @@ else
   echo "⚠️  Git Credential Manager not found. Install it with: brew install git-credential-manager"
 fi
 
-# WSL-specific optimizations
-echo "🐧 Applying WSL 2 optimizations..."
-
-# Configure WSL memory limits if not already set
-if ! grep -q "memory" /etc/wsl.conf 2>/dev/null; then
-  echo "🔧 Setting WSL 2 memory limits..."
-  cat <<EOF | sudo tee -a /etc/wsl.conf >/dev/null
-[wsl2]
-memory=8GB
-processors=4
-swap=2GB
-EOF
-fi
-
 echo "✅ Base installation completed."
 echo "🔄 To apply all changes, please restart your terminal or run: exec zsh"
 echo "⚠️  Some changes like Docker permissions will require you to restart WSL with 'wsl --shutdown' from PowerShell."
