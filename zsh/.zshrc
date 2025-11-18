@@ -123,13 +123,12 @@ alias mdfzf="~/scripts/mdfzf.sh"
 alias gdiff="git diff --ours --theirs"
 alias gconflict='files=$(git diff --name-only --diff-filter=U) && [ -n "$files" ] && nvim $files || echo "No merge conflicts found."'
 
-# pnpm
+#### pnpm ####
 export PNPM_HOME="/home/faq/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
-# pnpm end
 
 #### Bitwarden CLI ####
 # Unlock Bitwarden vault and export session token
@@ -191,3 +190,8 @@ alias bwg="bw-get"
 alias bws="bw-search"
 alias ghc="gh-connect"
 . "/home/faq/.deno/env"
+
+# Forzar inicio en home si estamos en Windows paths
+if [[ "$PWD" == /mnt/c/* ]]; then
+    cd ~
+fi
