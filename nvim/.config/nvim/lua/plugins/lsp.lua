@@ -97,22 +97,24 @@ return {
         local map = vim.keymap.set
 
         if client.server_capabilities.documentSymbolProvider then
-          if client.name == "denols" then
-            navic.attach(client, bufnr)
-            navbuddy.attach(client, bufnr)
-          elseif client.name == "vtsls" then
-            local has_denols = false
-            local current_clients = vim.lsp.get_clients({ bufnr = bufnr })
-            for _, c in ipairs(current_clients) do
-              if c.name == "denols" then
-                has_denols = true
-                break
+          -- Para denols/vtsls, esperar un poco para que el autocmd LspAttach haga su trabajo primero
+          if client.name == "denols" or client.name == "vtsls" then
+            vim.defer_fn(function()
+              -- Verificar si el cliente sigue activo después de que LspAttach lo procese
+              local is_still_active = false
+              local current_clients = vim.lsp.get_clients({ bufnr = bufnr })
+              for _, c in ipairs(current_clients) do
+                if c.id == client.id then
+                  is_still_active = true
+                  break
+                end
               end
-            end
-            if not has_denols then
-              navic.attach(client, bufnr)
-              navbuddy.attach(client, bufnr)
-            end
+              
+              if is_still_active then
+                navic.attach(client, bufnr)
+                navbuddy.attach(client, bufnr)
+              end
+            end, 100)
           else
             navic.attach(client, bufnr)
             navbuddy.attach(client, bufnr)

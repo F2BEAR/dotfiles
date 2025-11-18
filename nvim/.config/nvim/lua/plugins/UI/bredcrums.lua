@@ -4,8 +4,8 @@ return {
     lazy = true,
     opts = {
       lsp = {
-        auto_attach = true,
-        preference = nil,
+        auto_attach = false,
+        preference = { "vtsls", "denols" },
       },
       highlight = true,
       separator = " > ",
@@ -26,7 +26,7 @@ return {
       { "<leader>nb", "<cmd>Navbuddy<cr>", desc = "Nav Buddy" },
     },
     opts = {
-      lsp = { auto_attach = true },
+      lsp = { auto_attach = false, preference = { "vtsls", "denols" } },
     },
   },
 }
