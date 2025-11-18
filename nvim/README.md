@@ -229,6 +229,13 @@ Cuando Deno LSP está activo, el TypeScript LSP (vtsls) se desactiva automática
 | `zR` | Normal | Expandir todo |
 | `zM` | Normal | Colapsar todo |
 | `za` | Normal | Alternar fold bajo cursor |
+
+### Blink-indent (Indent Guides)
+| Tecla | Modo | Acción |
+|-------|------|--------|
+| `[i` | Normal | Saltar al comienzo del indent guide bajo el cursor |
+| `]i` | Normal | Saltar al final del indent guide bajo el cursor |
+
 ## 🧩 Plugins
 
 ### Which-Key
