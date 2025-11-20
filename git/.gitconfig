@@ -33,10 +33,11 @@
 
 [diff]
     colorMoved = default
-[user]
-	  name = Facundo Carbonel
-    email = facundoc@takeoffmedia.com
 [pull]
     rebase = false
 [init]
-	defaultBranch = main
+  defaultBranch = main
+[include]
+  path = ~/.gitconfig-personal
+[include]
+  path = ~/.gitconfig-work

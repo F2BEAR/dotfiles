@@ -2,6 +2,13 @@ export LD_LIBRARY_PATH=/opt/glibc-2.34/lib:$LD_LIBRARY_PATH
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
+case "$(hostname)" in
+  "faql0") export GIT_ENV="personal";;
+  "") export GIT_ENV="work";; #acordate de poner el nombre de la pc del laburo mañana xd
+  *) export GIT_ENV="default";;
+esac
+echo "GIT_ENV set to: $GIT_ENV (hostname: $(hostname))"
+
 #### history setup ####
 HISTFILE=$HOME/.zhistory
 SAVEHIST=1000
