@@ -2,18 +2,6 @@
 
 Configuración personal para desarrollo en WSL2 (Ubuntu) con ZSH, Neovim, Wezterm y más.
 
-## 📋 Contenido
-
-- [Instalación](#instalación)
-- [Estructura](#estructura)
-- [Herramientas Instaladas](#herramientas-instaladas)
-- [ZSH](#zsh)
-- [Git](#git)
-- [Neovim](#neovim)
-- [Wezterm](#wezterm)
-- [Starship](#starship)
-- [WSL](#wsl)
-
 ## 🚀 Instalación
 
 ```bash
