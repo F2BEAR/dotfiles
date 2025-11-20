@@ -3,8 +3,14 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 case "$(hostname)" in
-  "faql0") export GIT_ENV="personal";;
-  "TOM-N-008") export GIT_ENV="work";;
+  "faql0") 
+    export GIT_ENV="personal"
+    export C_USER="facuc"
+    ;;
+  "TOM-N-008") 
+    export GIT_ENV="work"
+    export C_USER="facundoc-tkf"
+    ;;
   *) export GIT_ENV="default";;
 esac
 
