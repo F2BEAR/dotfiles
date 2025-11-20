@@ -49,9 +49,9 @@ dotfiles/
 │   └── sync_wezterm.sh   # Script de sincronización
 ├── starship/             # Configuración de Starship prompt
 │   └── .config/starship.toml
-└── etc/                  # Archivos de sistema WSL
-    ├── wsl.conf
-    └── resolv.conf
+└── wsl/                  # Archivos de sistema WSL
+    ├── .wslconfig
+    └── sync_wsl.sh       # Script de sincronización
 ```
 
 ## 🛠️ Herramientas Instaladas
