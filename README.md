@@ -204,7 +204,7 @@ Para editar la configuración: `edit-nvim` o `cd ~/dotfiles/nvim/.config/nvim/ &
 
 ## 💻 Wezterm
 
-Terminal emulador GPU-acelerado configurado para WSL2.
+Terminal emulator GPU-acelerado configurado para WSL2.
 
 ### Características
 
@@ -226,14 +226,13 @@ Terminal emulador GPU-acelerado configurado para WSL2.
 - `Ctrl+H/J/K/L` - Navegar entre panes
 
 #### Tabs
-- `Ctrl+T` - Nueva tab
-- `Ctrl+W` - Cerrar tab
-- `Alt+1-9` - Cambiar a tab específica
+- `ALT+T` - Nueva tab
+- `Ctrl+D` - Cerrar tab
 
 ### Sincronización
 
 ```bash
-syncwez  # Copia .wezterm.lua a Windows user directory
+syncwez  # Copia .wezterm.lua al Windows user directory
 ```
 
 ## ⭐ Starship
@@ -275,6 +274,12 @@ swap=2GB
 - 4 procesadores
 - 2GB de swap
 - DNS personalizado
+
+### Sincronización
+
+```bash
+syncwsl  # Copia .wslconfig al Windows user directory
+```
 
 ## 🔄 Actualización
 
