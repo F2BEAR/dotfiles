@@ -24,10 +24,6 @@ git clone https://github.com/F2BEAR/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 chmod +x bootsrtap.sh
 ./bootsrtap.sh
-
-# Conectar con GitHub usando Bitwarden
-bwu  # Desbloquear Bitwarden
-ghc  # Conectar GitHub
 ```
 
 ### Post-instalación
@@ -35,7 +31,6 @@ ghc  # Conectar GitHub
 Después de ejecutar el bootstrap:
 1. Reinicia tu terminal o ejecuta: `exec zsh`
 2. Para aplicar cambios de Docker: `wsl --shutdown` desde PowerShell
-3. Configura Git Credential Manager: `ghc` (requiere Bitwarden desbloqueado)
 
 ## 📁 Estructura
 
@@ -44,9 +39,7 @@ dotfiles/
 ├── bootsrtap.sh          # Script de instalación principal
 ├── Makefile              # Configuración de instalación de Wezterm
 ├── git/                  # Configuración de Git
-│   ├── .gitconfig        # Config global de Git
-│   ├── connect-github.sh # Script para conectar GitHub con Bitwarden
-│   └── README.md         # Documentación de Git
+│   └── .gitconfig        # Config global de Git
 ├── zsh/                  # Configuración de ZSH
 │   └── .zshrc            # Configuración principal de ZSH
 ├── nvim/                 # Configuración de Neovim
@@ -68,7 +61,6 @@ dotfiles/
 
 ### Desarrollo
 - **Git** con **Git Delta** (mejor diff viewer)
-- **Git Credential Manager** - Gestión segura de credenciales
 - **Node.js** via **NVM** (Node Version Manager)
 - **Go** - Lenguaje de programación
 - **Docker** + **Docker Compose** - Contenedorización
@@ -142,13 +134,6 @@ bwg              # bw-get
 bws              # bw-search
 ```
 
-### GitHub
-
-```bash
-gh-connect       # Conectar GitHub con token de Bitwarden
-ghc              # Alias de gh-connect
-```
-
 ### Otros
 
 ```bash
@@ -192,12 +177,6 @@ Usa un tema custom basado en Coolnight con colores:
 - Syntax highlighting
 - Navegación con `n` y `N`
 - Color scheme personalizado (Coolnight)
-
-### Credential Manager
-
-Configurado para usar Git Credential Manager con integración a Bitwarden.
-
-Ver [git/README.md](git/README.md) para más detalles.
 
 ## 📝 Neovim
 
@@ -288,19 +267,13 @@ Prompt personalizado con información de:
 
 ### Configuración
 
-**`/etc/wsl.conf`**:
+**`.wslconfig`**:
 ```ini
-[network]
-generateResolvConf=false
-
 [wsl2]
 memory=8GB
 processors=4
 swap=2GB
 ```
-
-**`/etc/resolv.conf`**:
-Configuración custom de DNS (no generado automáticamente)
 
 ### Docker en WSL2
 
@@ -323,26 +296,6 @@ git pull
 ./bootsrtap.sh  # Re-ejecutar para aplicar cambios
 ```
 
-## 📦 Instalación Manual de Componentes
-
-### Solo Git Credential Manager
-```bash
-brew install git-credential-manager
-git-credential-manager configure
-```
-
-### Solo Bitwarden
-```bash
-brew install bitwarden-cli
-bw login
-```
-
-### Solo Fuentes
-```bash
-# Las fuentes se instalan automáticamente en:
-~/.local/share/fonts/JetBrainsMono/
-```
-
 ## 🐛 Troubleshooting
 
 ### Docker no funciona
@@ -362,12 +315,6 @@ export BW_SESSION=$(bw unlock --raw)
 ```bash
 # Reconstruir caché de fuentes
 fc-cache -fv ~/.local/share/fonts
-```
-
-### Git no puede autenticar
-```bash
-bwu  # Desbloquear Bitwarden
-ghc  # Reconectar GitHub
 ```
 
 ## 📄 Licencia

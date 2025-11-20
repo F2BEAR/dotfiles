@@ -191,17 +191,11 @@ bw-search() {
   bw list items --search "$1" --session $BW_SESSION | jq -r '.[] | "\(.name) - \(.login.username)"'
 }
 
-# Connect to GitHub using Bitwarden
-gh-connect() {
-  ~/dotfiles/git/connect-github.sh
-}
-
 # Alias for quick login
 alias bwu="bw-unlock"
 alias bwl="bw-lock"
 alias bwg="bw-get"
 alias bws="bw-search"
-alias ghc="gh-connect"
 . "/home/faq/.deno/env"
 
 # Forzar inicio en home si estamos en Windows paths
