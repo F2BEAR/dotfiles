@@ -50,7 +50,7 @@ fi
 
 # Install Homebrew packages
 echo "🍻 Installing Homebrew packages..."
-brew install go bat eza ripgrep git-delta starship zoxide stow neovim fd thefuck fzf jq nvm zsh-autosuggestions zsh-syntax-highlighting zsh-vi-mode bitwarden-cli git-credential-manager
+brew install go bat eza ripgrep git-delta starship zoxide stow neovim fd thefuck fzf jq nvm zsh-autosuggestions zsh-syntax-highlighting zsh-vi-mode bitwarden-cli
 
 # Node.js installation
 echo "📦 Installing Node.js (LTS)..."
