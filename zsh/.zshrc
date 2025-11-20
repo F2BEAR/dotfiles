@@ -123,19 +123,6 @@ export NVM_SYMLINK_CURRENT=true
 #### ZSH Vi Mode ####
 source $(brew --prefix)/opt/zsh-vi-mode/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 
-#### Aliases ####
-
-alias reload-zsh="source ~/.zshrc"
-alias edit-zsh="nvim ~/.zshrc"
-alias edit-wezterm="nvim /mnt/c/Users/facundoc-tkf/.wezterm.lua"
-alias edit-nvim="cd ~/dotfiles/nvim/.config/nvim/ && nvim"
-alias curlier="~/scripts/curlier/curlier.sh"
-alias syncwez="~/dotfiles/wezterm/sync_wezterm.sh"
-alias syncwsl="~/dotfiles/wsl/sync_wsl.sh"
-alias mdfzf="~/scripts/mdfzf/mdfzf.sh"
-alias gdiff="git diff --ours --theirs"
-alias gconflict='files=$(git diff --name-only --diff-filter=U) && [ -n "$files" ] && nvim $files || echo "No merge conflicts found."'
-
 #### pnpm ####
 export PNPM_HOME="/home/faq/.local/share/pnpm"
 case ":$PATH:" in
@@ -191,15 +178,28 @@ bw-search() {
   bw list items --search "$1" --session $BW_SESSION | jq -r '.[] | "\(.name) - \(.login.username)"'
 }
 
-# Alias for quick login
+#### Aliases ####
+
+alias reload-zsh="source ~/.zshrc"
+alias edit-zsh="nvim ~/.zshrc"
+alias edit-wezterm="nvim /mnt/c/Users/facundoc-tkf/.wezterm.lua"
+alias edit-nvim="cd ~/dotfiles/nvim/.config/nvim/ && nvim"
+alias curlier="~/scripts/curlier/curlier.sh"
+alias syncwez="~/dotfiles/wezterm/sync_wezterm.sh"
+alias syncwsl="~/dotfiles/wsl/sync_wsl.sh"
+alias mdfzf="~/scripts/mdfzf/mdfzf.sh"
+alias gdiff="git diff --ours --theirs"
+alias gconflict='files=$(git diff --name-only --diff-filter=U) && [ -n "$files" ] && nvim $files || echo "No merge conflicts found."'
 alias bwu="bw-unlock"
 alias bwl="bw-lock"
 alias bwg="bw-get"
 alias bws="bw-search"
+
 . "/home/faq/.deno/env"
 
 # Forzar inicio en home si estamos en Windows paths
 if [[ "$PWD" == /mnt/c/* ]]; then
     cd ~
 fi
+
 export PATH="/usr/local/bin:$PATH"
