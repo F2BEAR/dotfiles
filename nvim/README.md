@@ -183,14 +183,14 @@ Navegación y manipulación inteligente de código usando el árbol de sintaxis.
 
 | Tecla | Modo | Acción |
 |-------|------|--------|
-| `af` | Normal/Visual | Seleccionar función completa (outer) |
-| `if` | Normal/Visual | Seleccionar contenido de función (inner) |
-| `ac` | Normal/Visual | Seleccionar clase completa (outer) |
-| `ic` | Normal/Visual | Seleccionar contenido de clase (inner) |
-| `aa` | Normal/Visual | Seleccionar parámetro completo (outer) |
-| `ia` | Normal/Visual | Seleccionar contenido de parámetro (inner) |
-| `ab` | Normal/Visual | Seleccionar bloque completo (outer) |
-| `ib` | Normal/Visual | Seleccionar contenido de bloque (inner) |
+| `af` | Visual | Seleccionar función completa (outer) |
+| `if` | Visual | Seleccionar contenido de función (inner) |
+| `ac` | Visual | Seleccionar clase completa (outer) |
+| `ic` | Visual | Seleccionar contenido de clase (inner) |
+| `aa` | Visual | Seleccionar parámetro completo (outer) |
+| `ia` | Visual | Seleccionar contenido de parámetro (inner) |
+| `ab` | Visual | Seleccionar bloque completo (outer) |
+| `ib` | Visual | Seleccionar contenido de bloque (inner) |
 
 **Navegación entre elementos:**
 
