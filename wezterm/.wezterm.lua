@@ -4,7 +4,7 @@ local act = wezterm.action
 
 -- config goes here:
 
-config.default_prog = { "C:\\WINDOWS\\system32\\wsl.exe", "-d", "Ubuntu" }
+config.default_prog = { "C:\\WINDOWS\\system32\\wsl.exe", "--cd", "~", "-d", "Ubuntu" }
 
 -- Appearance
 config.color_scheme = "Hybrid"
