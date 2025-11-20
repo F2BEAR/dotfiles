@@ -122,26 +122,6 @@ else
   echo "✅ JetBrains Mono Nerd Font already installed."
 fi
 
-# Copy configuration files
-echo "🗂️ Copying custom files to /etc..."
-if [[ -d "$DOTFILES_DIR/etc" ]]; then
-  if [[ -f "$DOTFILES_DIR/etc/wsl.conf" && -f "$DOTFILES_DIR/etc/resolv.conf" ]]; then
-    if [ "$EUID" -ne 0 ]; then
-      echo "🔐 Using sudo to copy files to /etc"
-      sudo cp "$DOTFILES_DIR/etc/wsl.conf" /etc/wsl.conf
-      sudo cp "$DOTFILES_DIR/etc/resolv.conf" /etc/resolv.conf
-    else
-      cp "$DOTFILES_DIR/etc/wsl.conf" /etc/wsl.conf
-      cp "$DOTFILES_DIR/etc/resolv.conf" /etc/resolv.conf
-    fi
-    echo "✅ Configuration files copied successfully."
-  else
-    echo "⚠️  Required config files not found in $DOTFILES_DIR/etc/"
-  fi
-else
-  echo "⚠️  Dotfiles etc/ directory not found. Skipping configuration files."
-fi
-
 # Run the Makefile for wezterm config
 echo "🖥️  Setting up wezterm configuration..."
 if [[ -f "$DOTFILES_DIR/Makefile" ]]; then
