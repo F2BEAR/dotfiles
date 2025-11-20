@@ -151,16 +151,6 @@ if [[ -d "$DOTFILES_DIR" ]]; then
   done
 fi
 
-# Git Credential Manager setup
-echo "🔐 Setting up Git Credential Manager..."
-if command_exists git-credential-manager; then
-  git-credential-manager configure
-  echo "✅ Git Credential Manager configured."
-  echo "💡 To connect with GitHub using Bitwarden, run: $DOTFILES_DIR/git/setup-git-credentials.sh"
-else
-  echo "⚠️  Git Credential Manager not found. Install it with: brew install git-credential-manager"
-fi
-
 echo "✅ Base installation completed."
 echo "🔄 To apply all changes, please restart your terminal or run: exec zsh"
 echo "⚠️  Some changes like Docker permissions will require you to restart WSL with 'wsl --shutdown' from PowerShell."
