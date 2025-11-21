@@ -185,6 +185,7 @@ alias edit-zsh="nvim ~/.zshrc"
 alias edit-wezterm="nvim /mnt/c/Users/facundoc-tkf/.wezterm.lua"
 alias edit-nvim="cd ~/dotfiles/nvim/.config/nvim/ && nvim"
 alias curlier="~/scripts/curlier/curlier.sh"
+alias bwem='source ~/scripts/secretManager/bw-env.sh'
 alias syncwez="~/dotfiles/wezterm/sync_wezterm.sh"
 alias syncwsl="~/dotfiles/wsl/sync_wsl.sh"
 alias mdfzf="~/scripts/mdfzf/mdfzf.sh"
