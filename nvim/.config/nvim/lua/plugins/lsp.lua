@@ -49,6 +49,12 @@ return {
           local fname = vim.api.nvim_buf_get_name(bufnr)
           local util = require("lspconfig.util")
 
+          -- Don't manage vtsls/denols conflict for Vue files - vtsls is needed by vue_ls
+          local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+          if filetype == "vue" then
+            return
+          end
+
           local all_clients = vim.lsp.get_clients({ bufnr = bufnr })
           local same_name_clients = {}
           for _, c in pairs(all_clients) do
@@ -97,8 +103,13 @@ return {
         local map = vim.keymap.set
 
         if client.server_capabilities.documentSymbolProvider then
-          -- Para denols/vtsls, esperar un poco para que el autocmd LspAttach haga su trabajo primero
-          if client.name == "denols" or client.name == "vtsls" then
+          local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+          
+          -- For Vue files, only attach navic/navbuddy to vue_ls, not vtsls
+          if filetype == "vue" and client.name == "vtsls" then
+            -- Skip attaching navic/navbuddy to vtsls in Vue files
+          elseif client.name == "denols" or client.name == "vtsls" then
+            -- Para denols/vtsls, esperar un poco para que el autocmd LspAttach haga su trabajo primero
             vim.defer_fn(function()
               -- Verificar si el cliente sigue activo después de que LspAttach lo procese
               local is_still_active = false
@@ -207,10 +218,11 @@ return {
           "vtsls",
           "bashls",
           "denols",
+          "vue_ls",
         },
         handlers = {
           function(server_name)
-            if server_name == "denols" or server_name == "vtsls" then
+            if server_name == "denols" or server_name == "vtsls" or server_name == "vue_ls" then
               return
             end
             vim.lsp.config(server_name, {
@@ -240,9 +252,13 @@ return {
 
       vim.lsp.config("vtsls", {
         cmd = { "vtsls", "--stdio" },
-        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact", "vue" },
         root_markers = { "package.json", "tsconfig.json", "jsconfig.json" },
-        on_attach = on_attach,
+        on_attach = function(client, bufnr)
+          client.server_capabilities.documentFormattingProvider = false
+          client.server_capabilities.documentRangeFormattingProvider = false
+          on_attach(client, bufnr)
+        end,
       })
 
       vim.lsp.config("denols", {
@@ -301,8 +317,19 @@ return {
         },
       })
 
+      vim.lsp.config("vue_ls", {
+        filetypes = { "vue" },
+        on_attach = on_attach,
+        init_options = {
+          typescript = {
+            tsdk = vim.fn.stdpath("data") .. "/mason/packages/typescript-language-server/node_modules/typescript/lib"
+          },
+        },
+      })
+
       vim.lsp.enable("vtsls")
       vim.lsp.enable("denols")
+      vim.lsp.enable("vue_ls")
     end,
   },
 }
