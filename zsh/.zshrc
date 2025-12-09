@@ -204,3 +204,7 @@ if [[ "$PWD" == /mnt/c/* ]]; then
 fi
 
 export PATH="/usr/local/bin:$PATH"
+
+if [[ $- == *i* ]]; then
+  fastfetch
+fi
